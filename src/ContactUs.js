@@ -4,18 +4,21 @@ function ContactUs() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [comments, setComments] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
     const contactUsInfo = {
       name,
       email,
       phone,
+      comments,
       submittedOn: new Date(),
     };
     console.log(contactUsInfo);
     setName("");
     setEmail("");
     setPhone("");
+    setComments("");
   };
 
   return (
@@ -47,6 +50,15 @@ function ContactUs() {
             type="text"
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
+          />
+        </div>
+        <div>
+          <label htmlFor="comments">Comments: </label>
+          <textarea
+            id="comments"
+            name="comments"
+            onChange={(e) => setComments(e.target.value)}
+            value={comments}
           />
         </div>
         <button>Submit</button>
