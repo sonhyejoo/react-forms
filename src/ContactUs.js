@@ -1,19 +1,53 @@
+import { useState } from "react";
+
 function ContactUs() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const contactUsInfo = {
+      name,
+      email,
+      phone,
+      submittedOn: new Date(),
+    };
+    console.log(contactUsInfo);
+    setName("");
+    setEmail("");
+    setPhone("");
+  };
+
   return (
     <div>
       <h2>Contact us</h2>
-      <form>
+      <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
-          <input id="name" type="text" />
+          <input
+            id="name"
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
         </div>
         <div>
           <label htmlFor="email">Email: </label>
-          <input id="email" type="text" />
+          <input
+            id="email"
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
         </div>
         <div>
           <label htmlFor="phone">Phone: </label>
-          <input id="phone" type="text" />
+          <input
+            id="phone"
+            type="text"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
+          />
         </div>
         <button>Submit</button>
       </form>
